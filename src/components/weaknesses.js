@@ -8,6 +8,7 @@ function Weaknesses({ tem }) {
 			return (
 				<div className='tem-weakness' key={`${name}-${type}`}>
 					<img className='tem-type' src={typeIcons[type]} alt={type} />
+          {data[type] === 4 && <span className='tem-weakness-4times'>4x</span>}
 				</div>
 			)
 		}
@@ -15,6 +16,7 @@ function Weaknesses({ tem }) {
 			return (
 				<div className='tem-weakness' key={`${name}-${type}`}>
 					<img className='tem-type' src={typeIcons[type]} alt={type} />
+          {data[type] < 0.5 && <span className='tem-weakness-4times'>4x</span>}
 				</div>
 			)
 		}
