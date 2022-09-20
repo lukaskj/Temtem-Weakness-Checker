@@ -23,6 +23,10 @@ function TemList({ tems }) {
 		return new Set(temsToShow.map(tem => tem.number));
 	}, [tems, search]);
 
+  function openWiki(tem) {
+    window.open(tem.wikiUrl)
+  }
+
 	return (
 		<div className="tem-list">
 			<input 
@@ -35,11 +39,11 @@ function TemList({ tems }) {
 				<div className='tem-container'>
 					{tems.map((tem) => (
 						<div className='tem-wrapper' key={tem.name} style={{display: temList.has(tem.number) ? "inherit" : "none"}}>
-							<img className='tem-portrait' src={tem.wikiPortraitUrlLarge} alt={tem.name} />
+							<img className='tem-portrait' src={tem.wikiPortraitUrlLarge} alt={tem.name} onClick={() => openWiki(tem)} style={STYLES.cursorPointer} />
 							<div className='tem-info'>
 								<div className='tem-title'>
 									<p className='tem-number'>#{tem.number}</p>
-									<h3 className='tem-name'>{tem.name}</h3>
+									<h3 className='tem-name' onClick={() => openWiki(tem)} style={STYLES.cursorPointer}>{tem.name}</h3>
 								</div>
 								<Weaknesses tem={tem} />
 							</div>
@@ -59,3 +63,9 @@ function TemList({ tems }) {
 }
 
 export default TemList;
+
+const STYLES = {
+  cursorPointer: {
+    cursor: "pointer"
+  }
+}
